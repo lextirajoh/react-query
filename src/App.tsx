@@ -1,19 +1,14 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Profile } from "./pages/Profile";
-import { Contact } from "./pages/Contact";
-import { Navbar } from "./Navbar";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const client = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: true,
-      },
-    },
-  });
+import { Home } from './pages/Home';
+import { Profile } from './pages/Profile';
+import { Contact } from './pages/Contact';
+import { Navbar } from './Navbar';
+
+export default function App() {
+  const client = new QueryClient({});
+
   return (
     <div className="App">
       <QueryClientProvider client={client}>
@@ -30,5 +25,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
