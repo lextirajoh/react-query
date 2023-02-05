@@ -2,14 +2,25 @@ import { useQuery } from '@tanstack/react-query';
 import { default as Axios } from 'axios';
 
 export function Home() {
+  // with Fetch API:
   const {
     data: catData,
     isLoading,
     isError,
     refetch,
   } = useQuery(['cat'], () => {
-    return Axios.get('https://catfact.ninja/fact').then((res) => res.data);
+    return fetch('https://catfact.ninja/fact').then((response) => response.json());
   });
+
+  // with Axios:
+  // const {
+  //   data: catData,
+  //   isLoading,
+  //   isError,
+  //   refetch,
+  // } = useQuery(['cat'], () => {
+  //   return Axios.get('https://catfact.ninja/fact').then((response) => response.data);
+  // });
 
   return (
     <>
