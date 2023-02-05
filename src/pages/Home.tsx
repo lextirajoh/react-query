@@ -8,20 +8,14 @@ export function Home() {
     isError,
     refetch,
   } = useQuery(['cat'], () => {
-    return Axios.get('https://catfact.ninja/fact').then((res) => res.data);
+    return Axios.get('https://catfact.ninja/facrt').then((res) => res.data);
   });
-
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
-  if (isError) {
-    return <h1>There was an error.</h1>;
-  }
 
   return (
     <>
       <button onClick={() => refetch()}>Update Data</button>
+      {isLoading && <h1>Loading...</h1>}
+      {isError && <h1>There was an error.</h1>}
       <h1>{catData?.fact}</h1>
     </>
   );
