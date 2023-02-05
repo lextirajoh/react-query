@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { default as Axios } from 'axios';
 
-export function Home() {
+export default function Home() {
   // with Fetch API:
   const {
     data: catData,
@@ -9,7 +9,7 @@ export function Home() {
     isError,
     refetch,
   } = useQuery(['cat'], () => {
-    return fetch('https://catfact.ninja/fact').then((response) => response.json());
+    return fetch('https://catfact.ninja/fact').then((res) => res.json());
   });
 
   // with Axios:
@@ -19,7 +19,7 @@ export function Home() {
   //   isError,
   //   refetch,
   // } = useQuery(['cat'], () => {
-  //   return Axios.get('https://catfact.ninja/fact').then((response) => response.data);
+  //   return Axios.get('https://catfact.ninja/fact').then((res) => res.data);
   // });
 
   return (
