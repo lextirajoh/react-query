@@ -11,12 +11,12 @@ export function Home() {
     return Axios.get('https://catfact.ninja/fact').then((res) => res.data);
   });
 
-  if (isError) {
-    return <h1>There was an error.</h1>;
-  }
-
   if (isLoading) {
     return <h1>Loading...</h1>;
+  }
+
+  if (isError) {
+    return <h1>There was an error.</h1>;
   }
 
   return (
