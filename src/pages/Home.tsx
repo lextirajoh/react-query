@@ -8,7 +8,7 @@ export function Home() {
     isError,
     refetch,
   } = useQuery(['cat'], () => {
-    return Axios.get('https://catfact.ninja/facrt').then((res) => res.data);
+    return Axios.get('https://catfact.ninja/fact').then((res) => res.data);
   });
 
   return (
