@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { default as Axios } from 'axios';
+// import { default as Axios } from 'axios';
 
 export default function Home() {
   // with Fetch API:
@@ -8,8 +8,9 @@ export default function Home() {
     isLoading,
     isError,
     refetch,
-  } = useQuery(['cat'], () => {
-    return fetch('https://catfact.ninja/fact').then((res) => res.json());
+  } = useQuery({
+    queryKey: ['cat'],
+    queryFn: () => fetch('https://catfact.ninja/fact').then((res) => res.json()),
   });
 
   // with Axios:
@@ -18,8 +19,9 @@ export default function Home() {
   //   isLoading,
   //   isError,
   //   refetch,
-  // } = useQuery(['cat'], () => {
-  //   return Axios.get('https://catfact.ninja/fact').then((res) => res.data);
+  // } = useQuery({
+  //   queryKey: ['cat'],
+  //   queryFn: () => Axios.get('https://catfact.ninja/fact').then((res) => res.data),
   // });
 
   return (
